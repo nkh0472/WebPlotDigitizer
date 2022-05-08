@@ -1,0 +1,103 @@
+\documentclass[letterpaper, 11pt]{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\renewcommand{\baselinestretch}{1.1}
+\usepackage[margin=1.2in]{geometry}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+\begin{document}
+\title{WebPlotDigitizer Theory}
+\author{Ankit Rohatgi\footnote{E-Mail: ankitrohatgi@hotmail.com}}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Axes Calibration}
+
+\subsection{XY Axes}
+
+% notation:
+% (u,v) - pixels
+% (x_i, y_i) - data
+
+\begin{equation}
+\begin{bmatrix}
+x \\
+y 
+\end{bmatrix}
+= 
+\begin{bmatrix}
+a_1 & a_2 \\
+a_3 & a_4
+\end{bmatrix}
+\begin{bmatrix}
+u \\
+v
+\end{bmatrix}
++
+\begin{bmatrix}
+c_0 \\
+c_1
+\end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\begin{bmatrix}
+a_1 & a_2\\
+a_3 & a_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{\max} - x_{\min} & 0 \\
+0 & y_{\max} - y_{\min}
+\end{bmatrix}
+\begin{bmatrix}
+u_1 - u_0 & u_3 - u_2\\
+v_1 - v_0 & v_3 - v_2
+\end{bmatrix}^{-1}
+\end{equation}
+
+
+% x_min = a1*u_0 + a2*v_0 + c_0
+% y_min = a3*u_2 + a4*v_2 + c_1
+\begin{equation}
+\begin{bmatrix}
+c_0 \\
+c_1
+\end{bmatrix}
+=
+\begin{bmatrix}
+x_{\min} \\
+y_{\min}
+\end{bmatrix}
+-
+\begin{bmatrix}
+a_1 u_0 + a_2 v_0 \\
+a_3 u_2 + a_4 v_2
+\end{bmatrix}
+\end{equation}
+
+\subsection{Bar Axes}
+\subsection{Polar Axes}
+\subsection{Ternary Diagram}
+\subsection{Circular Chart Recorder}
+
+\section{Curve Extraction Algorithms}
+
+\subsection{Averaging Window}
+\subsection{X Step with Interpolation}
+\subsection{X Step}
+\subsection{Bar Extraction}
+
+\section{Measurements}
+
+\end{document}
