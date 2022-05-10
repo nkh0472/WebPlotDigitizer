@@ -4,6 +4,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{amsmath}
+\usepackage{tikz}
 \renewcommand{\baselinestretch}{1.1}
 \usepackage[margin=1.2in]{geometry}
 \usepackage{xcolor}
@@ -24,6 +25,25 @@
 \section{Axes Calibration}
 
 \subsection{XY Axes}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw[thick,dotted,->] (0,5) -- (0,0);
+\draw[thick,dotted,->] (0,5) -- (5,5);
+\draw[rotate around={20:(2,1)},thick,->] (2,1) -- (5,1);
+\draw[rotate around={20:(2,1)},thick,->] (2,1) -- (2,4);
+\draw[red,thick,-] (1.5,3.5) -- (4,2.5);
+\filldraw[rotate around={20:(2,1)},black] (2.5,1) circle (2pt) node[anchor=north]{$X_{\min}$};
+\filldraw[rotate around={20:(2,1)},black] (4.5,1) circle (2pt) node[anchor=north]{$X_{\max}$};
+\filldraw[rotate around={20:(2,1)},black] (2,1.5) circle (2pt) node[anchor=east]{$Y_{\min}$};
+\filldraw[rotate around={20:(2,1)},black] (2,3.5) circle (2pt) node[anchor=east]{$Y_{\max}$};
+\draw (0,0) node[anchor=west]{$v$};
+\draw (5,5) node[anchor=north]{$u$};
+
+\end{tikzpicture}
+\caption{Four points on the axes help compute the affine transformation needed to map the data in $(x,y)$ coordinates to the pixels $(u,v)$ on the screen.}
+\end{figure}
 
 % notation:
 % (u,v) - pixels
@@ -86,7 +106,51 @@ a_3 u_2 + a_4 v_2
 \end{bmatrix}
 \end{equation}
 
+TODO: add note about handling log scale, dates etc.
+
 \subsection{Bar Axes}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw[thick,dotted,->] (0,5) -- (0,0);
+\draw[thick,dotted,->] (0,5) -- (5,5);
+\draw[rotate around={20:(2,1)},thick,->] (2,1) -- (5,1);
+\draw[rotate around={20:(2,1)},thick,->] (2,1) -- (2,4);
+
+\filldraw [rotate around={20:(2,1)},fill=gray, draw=black] (2.5,1) rectangle (3,2.5);
+\filldraw [rotate around={20:(2,1)},fill=gray, draw=black] (3.5,1) rectangle (4,3);
+
+\filldraw[rotate around={20:(2,1)},black] (2,1.5) circle (2pt) node[anchor=east]{$P_1 (u_1, v_1)$};
+\filldraw[rotate around={20:(2,1)},black] (2,3.5) circle (2pt) node[anchor=east]{$P_2 (u_2, v_2)$};
+\filldraw[rotate around={20:(2,1)},black] (3.75,3) circle (2pt) node[anchor=south]{$P (u, v)$};
+\draw (0,0) node[anchor=west]{$v$};
+\draw (5,5) node[anchor=north]{$u$};
+
+\end{tikzpicture}
+\caption{Two points on the axes}
+\end{figure}
+
+\begin{equation}
+\vec v_{12} = (u_2-u_1)\hat i + (v_2 - v_1) \hat j
+\end{equation}
+
+\begin{equation}
+\vec v_p = (u-u_1)\hat i + (v - v_1) \hat j
+\end{equation}
+
+projected distance along the axis
+\begin{equation}
+d_p = \frac{\vec v_p \cdot \vec v_{12}}{|| \vec v_{12} ||}
+\end{equation}
+
+\begin{equation}
+y = (y_2 - y_1) \frac{d_p}{d_{12}} + y_1 \\
+\end{equation}
+\begin{equation}
+y = \left\{\frac{(u - u_1)(u_2 - u_1) + (v - v_1)(v_2 - v_1)}{(u_2 - u_1)^2 + (v_2 - v_1)^2}\right\}(y_2 - y_2) + y_1
+\end{equation}
+
 \subsection{Polar Axes}
 \subsection{Ternary Diagram}
 \subsection{Circular Chart Recorder}
