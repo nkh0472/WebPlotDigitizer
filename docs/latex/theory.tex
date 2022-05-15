@@ -152,7 +152,45 @@ y = \left\{\frac{(u - u_1)(u_2 - u_1) + (v - v_1)(v_2 - v_1)}{(u_2 - u_1)^2 + (v
 \end{equation}
 
 \subsection{Polar Axes}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw[thick,dotted,->] (0,7) -- (0,0);
+\draw[thick,dotted,->] (0,7) -- (7,7);
+\draw (0,0) node[anchor=west]{$v$};
+\draw (7,7) node[anchor=north]{$u$};
+
+\draw[thick] (3.5,3.5) circle (3);
+\draw[rotate around={-20:(3.5,3.5)},thick,dotted,-] (3.5,3.5) -- (6.5,3.5);
+\draw[rotate around={-20:(3.5,3.5)}] (6.5,3.5) node[anchor=west]{$\theta = 0^\circ$};
+
+\filldraw[black] (3.5,3.5) circle (2pt) node[anchor=east]{$O (u_0, v_0)$};
+\filldraw[black] (5.5,4) circle (2pt) node[anchor=north]{$P_1 (u_1, v_1)$};
+\filldraw[black] (3,6) circle (2pt) node[anchor=north]{$P_2 (u_2, v_2)$};
+\filldraw[black] (4,5) circle (2pt) node[anchor=north]{$P (u, v)$};
+
+\end{tikzpicture}
+\caption{Polar diagram}
+\end{figure}
+
+
+
 \subsection{Ternary Diagram}
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw[thick,dotted,->] (0,5) -- (0,0);
+\draw[thick,dotted,->] (0,5) -- (5,5);
+\draw (0,0) node[anchor=west]{$v$};
+\draw (5,5) node[anchor=north]{$u$};
+
+\end{tikzpicture}
+\caption{Ternary diagram}
+\end{figure}
+
+
 \subsection{Circular Chart Recorder}
 
 \section{Curve Extraction Algorithms}
