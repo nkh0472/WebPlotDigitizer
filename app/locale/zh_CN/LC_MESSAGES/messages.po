@@ -892,7 +892,7 @@ msgstr "显示"
 
 #: templates/_sidebars.html:23 templates/_sidebars.html:26
 msgid "Width"
-msgstr "宽带"
+msgstr "宽度"
 
 #: templates/_sidebars.html:23
 msgid "Erase All"
